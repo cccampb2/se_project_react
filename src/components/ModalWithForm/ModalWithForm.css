@@ -8,6 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+}
+
+.modal__opened {
+  visibility: visible;
 }
 
 .modal__content {
@@ -55,6 +60,10 @@
   border: none;
   background-position: 100% 100%;
   padding: 0;
+}
+
+.modal__close-btn:hover {
+  cursor: pointer;
 }
 
 .modal__form {
