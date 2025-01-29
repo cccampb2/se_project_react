@@ -1,9 +1,13 @@
 .page {
   background-color: #f3f3f3;
+  height: 100vh;
 }
 
 .page__content {
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 40px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
