@@ -8,8 +8,20 @@
   justify-content: center;
 }
 
-.card__name {
+.card__header {
   position: absolute;
+  top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.card__like-btn {
+  width: 18px;
+  height: 15px;
+}
+
+.card__name {
   background-color: #ffffff;
   border-radius: 4px;
   padding: 2px 12px;
@@ -18,7 +30,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  top: 15px;
+
   margin: 0;
 }
 

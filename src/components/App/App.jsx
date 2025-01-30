@@ -80,7 +80,8 @@ function App() {
               id="hot"
               className="modal__radio-input"
             />{" "}
-            Hot
+            <span className="custom-radio"></span>
+            <span>Hot</span>
           </label>
           <label
             htmlFor="warm"
@@ -92,7 +93,8 @@ function App() {
               id="warm"
               className="modal__radio-input"
             />{" "}
-            Warm
+            <span className="custom-radio"></span>
+            <span>Warm</span>
           </label>
           <label
             htmlFor="cold"
@@ -104,7 +106,8 @@ function App() {
               id="cold"
               className="modal__radio-input"
             />{" "}
-            Cold
+            <span className="custom-radio"></span>
+            <span>Cold</span>
           </label>
         </fieldset>
       </ModalWithForm>

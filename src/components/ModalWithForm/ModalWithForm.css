@@ -89,15 +89,49 @@
 .modal__label_type_radio {
   display: flex;
   flex-direction: row;
-  color: rgba(0, 0, 0, 0.5);
+  align-items: center;
   width: fit-content;
+  color: rgb(0, 0, 0, 0.5);
+  cursor: pointer;
+  gap: 8px;
+}
+
+.modal__radio-input {
+  display: none; /* Hide the default radio input */
+}
+
+/* Create a custom radio button */
+.custom-radio {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Initial border color */
+  position: relative;
+}
+
+/* The checked state with a darker border and a fill color */
+.modal__radio-input:checked + .custom-radio {
+  border-color: black;
+}
+
+.modal__radio-input:checked + .custom-radio::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black; /* Fill color */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modal__label_type_radio:hover {
   cursor: pointer;
 }
 
-.modal__label_type_radio .modal__radio-input:checked {
+.modal__radio-input:checked + .custom-radio + span {
   color: rgba(0, 0, 0, 1);
 }
 

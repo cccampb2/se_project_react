@@ -1,4 +1,5 @@
 import "./ItemCard.css";
+import likeButton from "../../assets/card-like-button.svg";
 
 function ItemCard({ item, openCardModal }) {
   const handleCardClick = () => {
@@ -6,7 +7,15 @@ function ItemCard({ item, openCardModal }) {
   };
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
+      <div className="card__header">
+        <h2 className="card__name">{item.name}</h2>
+        <img
+          className="card__like-btn"
+          src={likeButton}
+          alt="like button"
+        ></img>
+      </div>
+
       <img
         onClick={handleCardClick}
         className="card__image"
