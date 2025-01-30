@@ -89,6 +89,16 @@
 .modal__label_type_radio {
   display: flex;
   flex-direction: row;
+  color: rgba(0, 0, 0, 0.5);
+  width: fit-content;
+}
+
+.modal__label_type_radio:hover {
+  cursor: pointer;
+}
+
+.modal__label_type_radio .modal__radio-input:checked {
+  color: rgba(0, 0, 0, 1);
 }
 
 .modal__submit-btn {
@@ -96,7 +106,16 @@
   height: 36px;
   border-radius: 4px;
   border: none;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 1);
   color: #ffffff;
   padding: 8px 16px;
+}
+
+.modal__submit-btn:hover:not(:disabled) {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__submit-btn:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
 }

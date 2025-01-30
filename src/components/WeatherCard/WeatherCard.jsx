@@ -1,13 +1,13 @@
 import "./WeatherCard.css";
-import cloudy from "../../assets/weather-cards/cloudy.svg";
+import { timeOfDayImages } from "../../utils/constants.js";
 
-function WeatherCard() {
+function WeatherCard({ weatherData }) {
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">75 &deg; F</p>
+      <p className="weather-card__temp">{weatherData.temp.F} &deg; F</p>
       <img
         className="weather-card__image"
-        src={cloudy}
+        src={timeOfDayImages[weatherData.imageName]}
         alt="cloudy banner"
       ></img>
     </section>
