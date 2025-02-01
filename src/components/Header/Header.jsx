@@ -2,13 +2,7 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import { useState } from "react";
-function Header({ onAddButtonClick, weatherData }) {
-  const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpened(!isMobileMenuOpened);
-  };
-
+function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -34,7 +28,12 @@ function Header({ onAddButtonClick, weatherData }) {
           <img src={avatar} alt="Caleb Campbell" className="header__avatar" />
         </div>
       </div>
-      <button className="header__open-modal-button"></button>
+      <button
+        onClick={() => {
+          onBurgerClick(true);
+        }}
+        className="header__open-modal-button"
+      ></button>
     </header>
   );
 }

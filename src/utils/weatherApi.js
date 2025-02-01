@@ -20,7 +20,7 @@ export const filterWeatherData = (data) => {
     data.sys.sunrise <= seconds && data.sys.sunset >= seconds ? "day" : "night";
 
   result.city = data.name;
-  result.temp = { F: data.main.temp };
+  result.temp = { F: Math.round(data.main.temp) };
   result.type =
     result.temp.F >= 86 ? "hot" : result.temp.F >= 66 ? "warm" : "cold";
   result.imageName = imageToDisplay(conditionCode, timeOfDay);
