@@ -11,7 +11,7 @@
   visibility: hidden;
 }
 
-.modal__opened {
+.modal_opened {
   visibility: visible;
 }
 
@@ -153,22 +153,22 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.modal__content_type_new-garment {
+.modal__content_type_add-clothes {
   border-radius: 20px;
   padding: 28px 28px 36px;
 }
 
 @media screen and (max-width: 500px) {
-  .modal:has(> .modal__content_type_new-garment) {
+  .modal:has(> .modal__content_type_add-clothes) {
     align-items: end;
   }
 
-  .modal__content_type_new-garment {
+  .modal__content_type_add-clothes {
     border-radius: 12px 12px 0 0;
     padding: 32px 16px;
   }
 
-  .modal__close-btn_type_new-garment {
+  .modal__close-btn_type_add-clothes {
     position: absolute;
     top: 20px;
     right: 20px;

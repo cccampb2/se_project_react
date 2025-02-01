@@ -2,9 +2,7 @@ import "./ItemModal.css";
 
 function ItemModal({ children, activeModal, card, onExitButtonClick }) {
   return (
-    <div
-      className={`modal ${activeModal === "preview" ? "modal__opened" : ""}`}
-    >
+    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         {" "}
         <button
