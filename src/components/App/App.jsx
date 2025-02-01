@@ -27,10 +27,12 @@ function App() {
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+    setIsMobileMenuOpened(false);
   };
 
   const handleAddClick = () => {
-    setActiveModal("add-garment");
+    setActiveModal("new-garment");
+    setIsMobileMenuOpened(false);
   };
 
   const handleModalClose = () => {
@@ -60,7 +62,7 @@ function App() {
       <ModalWithForm
         title={"New Garment"}
         buttonText={"Add garment"}
-        activeModal={activeModal}
+        isOpen={activeModal === "new-garment"}
         onExitButtonClick={handleModalClose}
       >
         <label htmlFor="name" className="modal__label">
@@ -131,7 +133,7 @@ function App() {
         </fieldset>
       </ModalWithForm>
       <ItemModal
-        activeModal={activeModal}
+        isOpen={activeModal === "preview"}
         card={selectedCard}
         onExitButtonClick={handleModalClose}
       />
