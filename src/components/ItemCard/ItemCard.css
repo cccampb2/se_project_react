@@ -6,6 +6,8 @@
   border-radius: 19px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: rgba(233, 233, 233, 1);
 }
 
 .card__header {
@@ -35,11 +37,27 @@
 }
 
 .card__image {
+  height: 226px;
+  width: 226px;
   border-radius: 19px;
-  height: 100%;
-  width: 100%;
 }
 
-.card__image:hover {
+.card:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 164px;
+    height: 164px;
+  }
+
+  .card__image {
+    width: 124px;
+    height: 124px;
+  }
+
+  .card__header {
+    top: 7px;
+  }
 }

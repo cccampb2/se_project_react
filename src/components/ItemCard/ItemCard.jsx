@@ -6,7 +6,7 @@ function ItemCard({ item, openCardModal }) {
     openCardModal(item);
   };
   return (
-    <li className="card">
+    <li onClick={handleCardClick} className="card">
       <div className="card__header">
         <h2 className="card__name">{item.name}</h2>
         <img
@@ -16,12 +16,7 @@ function ItemCard({ item, openCardModal }) {
         ></img>
       </div>
 
-      <img
-        onClick={handleCardClick}
-        className="card__image"
-        src={item.link}
-        alt={item.name}
-      ></img>
+      <img className="card__image" src={item.link} alt={item.name}></img>
     </li>
   );
 }

@@ -8,6 +8,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import { coordinates, APIkey } from "../../utils/constants.js";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi.js";
+import HeaderModal from "../HeaderModal/HeaderModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -54,7 +55,9 @@ function App() {
         onExitButtonClick={handleModalClose}
       >
         <label htmlFor="name" className="modal__label">
-          Name{" "}
+          <div>
+            Name <span id="name-error"></span>
+          </div>
           <input
             className="modal__input"
             type="text"
@@ -63,7 +66,10 @@ function App() {
           />
         </label>
         <label htmlFor="imageUrl" className="modal__label">
-          Image{" "}
+          <div>
+            Image <span id="image-error"></span>
+          </div>
+
           <input
             className="modal__input"
             type="url"
@@ -72,7 +78,11 @@ function App() {
           />
         </label>
         <fieldset className="modal__radio-btns">
-          <legend className="modal__legend">Select the weather type:</legend>
+          <div>
+            <legend className="modal__legend">Select the weather type:</legend>
+            <span id="radio-error"></span>
+          </div>
+
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input
               name="weather-type"
@@ -116,6 +126,7 @@ function App() {
         card={selectedCard}
         onExitButtonClick={handleModalClose}
       />
+      <HeaderModal onAddButtonClick={handleAddClick} />
     </div>
   );
 }

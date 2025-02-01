@@ -24,3 +24,9 @@
   object-fit: cover;
   object-position: right top;
 }
+
+@media screen and (max-width: 500px) {
+  .weather-card {
+    margin-bottom: 32px;
+  }
+}

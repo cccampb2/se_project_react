@@ -1,14 +1,13 @@
 main {
   position: relative;
 }
-.cards {
-}
 
 .cards__text {
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24.8px;
+  margin: 0 0 34px;
 }
 
 .cards__list {
@@ -19,4 +18,15 @@ main {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .cards__list {
+    row-gap: 16px;
+    column-gap: 15px;
+  }
+
+  .cards__text {
+    margin: 0 0 20px;
+  }
 }

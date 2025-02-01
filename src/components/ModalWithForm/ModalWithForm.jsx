@@ -13,12 +13,12 @@ function ModalWithForm({
         activeModal === "add-garment" ? "modal__opened" : ""
       }`}
     >
-      <div className="modal__content">
+      <div className="modal__content modal__content_type_new-garment">
         <h2 className="modal__title">{title}</h2>
         <button
           onClick={onExitButtonClick}
           type="button"
-          className="modal__close-btn"
+          className="modal__close-btn modal__close-btn_type_new-garment"
         ></button>
         <form className="modal__form">
           {children}

@@ -8,6 +8,11 @@
   margin-right: 24px;
 }
 
+.header__logo-date-location {
+  display: flex;
+  align-items: center;
+}
+
 .header__date-and-location {
   margin: 0;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -15,10 +20,11 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  text-wrap: nowrap;
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
+  margin: 0 20px 0 0;
   border: none;
   background-color: transparent;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -45,4 +51,55 @@
   font-style: normal;
   font-size: 20px;
   line-height: 24.8px;
+}
+
+.header__modal-items {
+  display: flex;
+  margin-left: auto;
+}
+
+.header__open-modal-button {
+  background-color: #ffffff;
+  background-image: url("../../assets/header-burger-icon.svg");
+  position: absolute;
+  visibility: hidden;
+  width: 44px;
+  height: 44px;
+  background-size: 28px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  top: 18px;
+  right: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header__open-modal-button:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    padding: 18px 0 16px;
+  }
+  .header__logo-date-location {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+  }
+
+  .header__logo {
+    margin-bottom: 0;
+  }
+
+  .header__modal-items {
+    visibility: hidden;
+  }
+
+  .header__open-modal-button {
+    visibility: visible;
+  }
 }

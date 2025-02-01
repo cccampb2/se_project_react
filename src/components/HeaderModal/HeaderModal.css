@@ -1,0 +1,22 @@
+.modal__content_type_header {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__content_type_header {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    visibility: hidden;
+    background-color: #ffffff;
+    width: 343px;
+    height: 209px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+}

@@ -4,7 +4,7 @@
   padding: 0;
   overflow: hidden;
   border-radius: 16px;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .modal__image {
@@ -14,6 +14,7 @@
 
 .modal__close-btn {
   mix-blend-mode: multiply;
+  color: #ffffff;
 }
 
 .modal__caption,
@@ -31,4 +32,45 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+
+.modal__close-btn_type_card {
+  top: 20px;
+  right: 20px;
+}
+.modal__content_type_image {
+  padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__content_type_image {
+    width: 343px;
+    height: 463px;
+    margin: 0 16px 0;
+    border-radius: 12px;
+  }
+
+  .modal__image {
+    width: 343px;
+    height: 343px;
+  }
+
+  .modal__close-btn {
+    width: 21.21px;
+    height: 21.41px;
+    background-image: url("../../assets/mobile-exit-button.svg");
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+    mix-blend-mode: multiply;
+  }
+
+  .modal__close-btn_type_card {
+    top: 12px;
+    right: 12.79px;
+  }
+
+  .modal__footer {
+    margin: 0 0 20px 40px;
+  }
 }
