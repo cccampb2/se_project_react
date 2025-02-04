@@ -23,7 +23,7 @@
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 0;
+  margin: 0;
   border: none;
   background-color: transparent;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -55,6 +55,8 @@
 .header__modal-items {
   display: flex;
   margin-left: auto;
+  align-items: center;
+  gap: 20px;
 }
 
 .header__open-modal-button {

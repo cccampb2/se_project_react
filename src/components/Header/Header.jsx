@@ -2,6 +2,7 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import { useState } from "react";
+import ToggleSwitch from "../App/ToggleSwitch/ToggleSwitch";
 function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -16,6 +17,7 @@ function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
         </p>
       </div>
       <div className="header__modal-items">
+        <ToggleSwitch />
         <button
           type="button"
           onClick={onAddButtonClick}

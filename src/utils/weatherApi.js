@@ -24,6 +24,7 @@ export const filterWeatherData = (data) => {
   result.type =
     result.temp.F >= 86 ? "hot" : result.temp.F >= 66 ? "warm" : "cold";
   result.imageName = imageToDisplay(conditionCode, timeOfDay);
+  result.temp.C = Math.round(((result.temp.F - 32) * 5) / 9);
   return result;
 };
 
