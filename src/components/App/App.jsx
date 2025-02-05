@@ -10,6 +10,8 @@ import { coordinates, APIkey } from "../../utils/constants.js";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi.js";
 import HeaderModal from "../HeaderModal/HeaderModal.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -65,7 +67,26 @@ function App() {
             onAddButtonClick={handleAddClick}
             weatherData={weatherData}
           />
-          <Main weatherData={weatherData} openCardModal={handleCardClick} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  openCardModal={handleCardClick}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  weatherData={weatherData}
+                  openCardModal={handleCardClick}
+                />
+              }
+            />
+          </Routes>
           <Footer />
         </div>
         <ModalWithForm

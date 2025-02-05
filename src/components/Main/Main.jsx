@@ -4,6 +4,7 @@ import "./Main.css";
 import { defaultClothingItems } from "../../utils/constants.js";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import { Outlet } from "react-router-dom";
 function Main({ weatherData, openCardModal }) {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext

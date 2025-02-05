@@ -3,6 +3,7 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import { useState } from "react";
 import ToggleSwitch from "../App/ToggleSwitch/ToggleSwitch";
+import { Link, NavLink } from "react-router-dom";
 function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -11,7 +12,10 @@ function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   return (
     <header className="header">
       <div className="header__logo-date-location">
-        <img className="header__logo" src={logo} alt="WTWR logo" />
+        <NavLink to="/">
+          <img className="header__logo" src={logo} alt="WTWR logo" />
+        </NavLink>
+
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
         </p>
@@ -25,10 +29,12 @@ function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
         >
           + Add Clothes
         </button>
-        <div className="header__user-container">
-          <p className="header__username">Caleb Campbell</p>
-          <img src={avatar} alt="Caleb Campbell" className="header__avatar" />
-        </div>
+        <NavLink to="/profile" className="header__link">
+          <div className="header__user-container">
+            <div className="header__username">Caleb Campbell</div>
+            <img src={avatar} alt="Caleb Campbell" className="header__avatar" />
+          </div>
+        </NavLink>
       </div>
       <button
         onClick={() => {

@@ -37,10 +37,19 @@
   cursor: pointer;
 }
 
+.header__link {
+  text-decoration: none;
+  color: #000;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.header__user-container:hover {
+  cursor: pointer;
 }
 
 .header__username {
@@ -74,10 +83,6 @@
   right: 16px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.header__open-modal-button:hover {
-  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
