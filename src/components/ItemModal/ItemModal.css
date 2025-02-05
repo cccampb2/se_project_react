@@ -23,15 +23,31 @@
 }
 
 .modal__caption {
-  margin: 20px 0 12px;
+  margin: 0 0 12px;
 }
 
 .modal__footer {
-  margin: 0 0 32px 32px;
+  margin: 20px 32px 32px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__item-delete-btn {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 77, 0);
+  text-align: top;
+  width: fit-content;
+  height: fit-content;
+}
+.modal__item-delete-btn:hover {
+  cursor: pointer;
 }
 
 .modal__close-btn_type_card {

@@ -15,6 +15,7 @@ import Profile from "../Profile/Profile.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
+import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -44,12 +45,33 @@ function App() {
     setActiveModal("");
   };
 
+  const handleCancelDelete = () => {
+    setActiveModal("");
+    setSelectedCard({});
+  };
+
   const handleAddItemSubmit = (item) => {
     item = {
       _id: clothingItemsList.length,
       ...item,
     };
     setClothingItemsList([item, ...clothingItemsList]);
+  };
+
+  const openConfirmationModal = (card) => {
+    setActiveModal("confirmation");
+    setSelectedCard(card);
+    setIsMobileMenuOpened(false);
+  };
+
+  const handleCardDelete = () => {
+    setClothingItemsList(
+      clothingItemsList.filter((card) => {
+        return card._id != selectedCard._id;
+      }),
+      ...clothingItemsList
+    );
+    handleModalClose();
   };
 
   useEffect(() => {
@@ -106,6 +128,7 @@ function App() {
           onAddItem={handleAddItemSubmit}
         />
         <ItemModal
+          openConfirmationModal={openConfirmationModal}
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onExitButtonClick={handleModalClose}
@@ -115,6 +138,12 @@ function App() {
           isMobileMenuOpened={isMobileMenuOpened}
           onClose={setIsMobileMenuOpened}
           onAddButtonClick={handleAddClick}
+        />
+        <DeleteItemCardModal
+          handleCardDelete={handleCardDelete}
+          onExitButtonClick={handleModalClose}
+          handleCancelDelete={handleCancelDelete}
+          isOpen={activeModal === "confirmation"}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
