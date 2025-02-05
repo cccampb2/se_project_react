@@ -1,9 +1,8 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
-import { useState } from "react";
-import ToggleSwitch from "../App/ToggleSwitch/ToggleSwitch";
-import { Link, NavLink } from "react-router-dom";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import { NavLink } from "react-router-dom";
 function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",

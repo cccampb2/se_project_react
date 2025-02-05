@@ -38,8 +38,8 @@
 }
 
 .card__image {
-  height: 226px;
-  width: 226px;
+  height: 100%;
+  width: 100%;
   border-radius: 19px;
 }
 
@@ -51,11 +51,6 @@
   .card {
     width: 164px;
     height: 164px;
-  }
-
-  .card__image {
-    width: 124px;
-    height: 124px;
   }
 
   .card__header {

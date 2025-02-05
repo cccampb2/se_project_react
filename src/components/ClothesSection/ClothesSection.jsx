@@ -1,8 +1,8 @@
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants.js";
+
 import ItemCard from "../ItemCard/ItemCard.jsx";
 
-function ClothesSection({ weatherData, openCardModal }) {
+function ClothesSection({ openCardModal, clothingItemsList }) {
   return (
     <div className="clothes-section">
       <div className="clothes-sections__header-items">
@@ -10,7 +10,7 @@ function ClothesSection({ weatherData, openCardModal }) {
         <button className="clothes-section__add-new-btn">+ Add New</button>
       </div>
       <ul className="clothes-section__list">
-        {defaultClothingItems.map((item) => {
+        {clothingItemsList.map((item) => {
           return (
             <ItemCard
               key={item._id}

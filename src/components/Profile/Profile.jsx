@@ -1,11 +1,14 @@
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile({ weatherData, openCardModal }) {
+function Profile({ clothingItemsList, openCardModal }) {
   return (
     <div className="profile">
       <SideBar />
-      <ClothesSection weatherData={weatherData} openCardModal={openCardModal} />
+      <ClothesSection
+        clothingItemsList={clothingItemsList}
+        openCardModal={openCardModal}
+      />
     </div>
   );
 }

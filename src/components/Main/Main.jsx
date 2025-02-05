@@ -1,14 +1,11 @@
 import WeatherCard from "../WeatherCard/WeatherCard.jsx";
 import ItemCard from "../ItemCard/ItemCard.jsx";
 import "./Main.css";
-import { defaultClothingItems } from "../../utils/constants.js";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { Outlet } from "react-router-dom";
-function Main({ weatherData, openCardModal }) {
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
-    CurrentTemperatureUnitContext
-  );
+function Main({ weatherData, openCardModal, clothingItemsList }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -18,7 +15,7 @@ function Main({ weatherData, openCardModal }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {defaultClothingItems
+          {clothingItemsList
             .filter((item) => {
               return item.weather === weatherData.type;
             })
@@ -33,6 +30,7 @@ function Main({ weatherData, openCardModal }) {
             })}
         </ul>
       </section>
+      <Outlet />
     </main>
   );
 }

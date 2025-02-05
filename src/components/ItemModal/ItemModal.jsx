@@ -4,7 +4,6 @@ function ItemModal({ isOpen, card, onExitButtonClick }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
-        {" "}
         <button
           onClick={onExitButtonClick}
           type="button"
