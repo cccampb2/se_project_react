@@ -33,7 +33,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name: name, weather: temperatureForClothing, link: url });
+    onAddItem({ name: name, weather: temperatureForClothing, imageUrl: url });
     onCloseModal();
   };
 

@@ -2,20 +2,31 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 function Header({ onAddButtonClick, weatherData, onBurgerClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const location = useLocation();
+  const isProfile = location.pathname === "/profile";
   return (
     <header className="header">
-      <div className="header__logo-date-location">
+      <div
+        className={`header__logo-date-location ${
+          isProfile ? "header__profile" : ""
+        }`}
+      >
         <NavLink to="/">
           <img className="header__logo" src={logo} alt="WTWR logo" />
         </NavLink>
 
-        <p className="header__date-and-location">
+        <p
+          className={`header__date-and-location ${
+            isProfile ? "header__profile-date-location" : ""
+          }`}
+        >
           {currentDate}, {weatherData.city}
         </p>
       </div>

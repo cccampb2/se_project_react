@@ -1,7 +1,6 @@
 .side-bar {
   display: flex;
   gap: 16px;
-  align-items: top;
   margin-top: 15px;
   width: fit-content;
   height: fit-content;
@@ -21,4 +20,59 @@
   font-style: normal;
   font-size: 20px;
   line-height: 24.8px;
+}
+
+.side-bar__text {
+  display: flex;
+
+  align-items: center;
+  width: fit-content;
+}
+
+.side-bar__logout-edit-data {
+  visibility: hidden;
+  position: absolute;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24.8px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.side-bar__edit-profile {
+  margin: 0;
+}
+
+.side-bar__logout {
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .side-bar {
+    padding: 20px 0 20px;
+    width: 100%;
+    margin: 4px 0;
+    gap: 20px;
+    border-top: solid 1px rgba(0, 0, 0, 0.3);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+    align-items: start;
+  }
+  .side-bar__username {
+    font-size: 24px;
+    line-height: 29.76px;
+    margin-bottom: 12px;
+  }
+
+  .side-bar__logout-edit-data {
+    visibility: visible;
+    position: relative;
+  }
+
+  .side-bar__edit-profile {
+    margin-bottom: 8px;
+  }
+
+  .side-bar__text {
+    flex-direction: column;
+  }
 }

@@ -1,5 +1,7 @@
 import avatar from "../../assets/avatar.png";
 import "./HeaderModal.css";
+import { NavLink } from "react-router-dom";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function HeaderModal({ onAddButtonClick, onClose, isMobileMenuOpened }) {
   return (
@@ -8,10 +10,12 @@ function HeaderModal({ onAddButtonClick, onClose, isMobileMenuOpened }) {
         isMobileMenuOpened ? "modal__content_type_header-is-opened" : ""
       }`}
     >
-      <div className="header__user-container">
-        <p className="header__username">Caleb Campbell</p>
-        <img src={avatar} alt="Caleb Campbell" className="header__avatar" />
-      </div>
+      <NavLink to="/profile" className="header__link">
+        <div className="header__user-container">
+          <p className="header__username">Caleb Campbell</p>
+          <img src={avatar} alt="Caleb Campbell" className="header__avatar" />
+        </div>
+      </NavLink>
       <button
         type="button"
         onClick={onAddButtonClick}
@@ -19,6 +23,7 @@ function HeaderModal({ onAddButtonClick, onClose, isMobileMenuOpened }) {
       >
         + Add Clothes
       </button>
+      <ToggleSwitch isHidden={!isMobileMenuOpened} />
       <button
         onClick={() => {
           onClose(false);

@@ -73,6 +73,7 @@
   .modal__image {
     width: 343px;
     height: 343px;
+    margin: 0 0 20px;
   }
 
   .modal__close-btn {
@@ -91,6 +92,6 @@
   }
 
   .modal__footer {
-    margin: 0 0 20px 40px;
+    margin: 0 20px 40px;
   }
 }

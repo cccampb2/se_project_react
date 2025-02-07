@@ -12,10 +12,10 @@ import HeaderModal from "../HeaderModal/HeaderModal.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile.jsx";
-import { defaultClothingItems } from "../../utils/constants.js";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx";
+import { getItems, addNewItem, deleteCard } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,8 +27,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItemsList, setClothingItemsList] =
-    useState(defaultClothingItems);
+  const [clothingItemsList, setClothingItemsList] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -50,12 +49,12 @@ function App() {
     setSelectedCard({});
   };
 
-  const handleAddItemSubmit = (item) => {
-    item = {
-      _id: clothingItemsList.length,
-      ...item,
-    };
-    setClothingItemsList([item, ...clothingItemsList]);
+  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+    addNewItem({ name, imageUrl, weather })
+      .then((item) => {
+        setClothingItemsList([item, ...clothingItemsList]);
+      })
+      .catch(console.error);
   };
 
   const openConfirmationModal = (card) => {
@@ -65,13 +64,17 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    setClothingItemsList(
-      clothingItemsList.filter((card) => {
-        return card._id != selectedCard._id;
-      }),
-      ...clothingItemsList
-    );
-    handleModalClose();
+    deleteCard({ _id: selectedCard._id })
+      .then((data) => {
+        setClothingItemsList(
+          clothingItemsList.filter((card) => {
+            return card._id != selectedCard._id;
+          }),
+          ...clothingItemsList
+        );
+        handleModalClose();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -79,6 +82,14 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItemsList(data);
       })
       .catch(console.error);
   }, []);
@@ -97,6 +108,7 @@ function App() {
             onBurgerClick={setIsMobileMenuOpened}
             onAddButtonClick={handleAddClick}
             weatherData={weatherData}
+            isMobileMenuOpened={isMobileMenuOpened}
           />
           <Routes>
             <Route

@@ -18,14 +18,14 @@ main {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 85px;
 }
 
 @media screen and (max-width: 500px) {
   .cards__list {
     row-gap: 16px;
     column-gap: 15px;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
   }
 
   .cards__text {

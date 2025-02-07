@@ -16,7 +16,7 @@ function ItemCard({ item, openCardModal }) {
         ></img>
       </div>
 
-      <img className="card__image" src={item.link} alt={item.name}></img>
+      <img className="card__image" src={item.imageUrl} alt={item.name}></img>
     </li>
   );
 }

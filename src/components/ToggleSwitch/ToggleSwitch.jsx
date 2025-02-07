@@ -2,13 +2,13 @@ import { useContext } from "react";
 import "./ToggleSwitch.css";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function ToggleSwitch() {
+function ToggleSwitch({ isHidden }) {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
   return (
     <>
-      <label className="switch">
+      <label className={`switch ${isHidden ? "switch_hidden" : ""}`}>
         <input
           onChange={handleToggleSwitchChange}
           className="switch__checkbox"

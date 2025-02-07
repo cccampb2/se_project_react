@@ -8,7 +8,7 @@
 .clothes-sections__header-items {
   display: flex;
   gap: 20px;
-  margin: 31px 0 16px;
+  margin: 35px 0 16px;
 }
 
 .clothes-sections__your-items {
@@ -26,10 +26,23 @@
 .clothes-section__list {
   padding: 0;
   display: flex;
-  gap: 21px;
+  gap: 20px;
   flex-wrap: wrap;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 500px) {
+  .clothes-sections__header-items {
+    justify-content: space-between;
+    margin: 16px 0 16px;
+  }
+
+  .clothes-section__list {
+    column-gap: 15px;
+    row-gap: 16px;
+    margin-bottom: 40px;
+  }
 }
