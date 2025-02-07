@@ -2,12 +2,17 @@ import "./ClothesSection.css";
 
 import ItemCard from "../ItemCard/ItemCard.jsx";
 
-function ClothesSection({ openCardModal, clothingItemsList }) {
+function ClothesSection({ openCardModal, clothingItemsList, newButtonClick }) {
   return (
     <div className="clothes-section">
       <div className="clothes-sections__header-items">
         <p className="clothes-sections__your-items">Your items</p>
-        <button className="clothes-section__add-new-btn">+ Add New</button>
+        <button
+          onClick={newButtonClick}
+          className="clothes-section__add-new-btn"
+        >
+          + Add New
+        </button>
       </div>
       <ul className="clothes-section__list">
         {clothingItemsList.map((item) => {

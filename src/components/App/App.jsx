@@ -28,6 +28,7 @@ function App() {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItemsList, setClothingItemsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -42,19 +43,23 @@ function App() {
 
   const handleModalClose = () => {
     setActiveModal("");
+    setIsMobileMenuOpened(false);
   };
 
   const handleCancelDelete = () => {
-    setActiveModal("");
+    handleModalClose();
     setSelectedCard({});
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+    setIsLoading(true);
     addNewItem({ name, imageUrl, weather })
       .then((item) => {
         setClothingItemsList([item, ...clothingItemsList]);
+        handleModalClose();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(setIsLoading(false));
   };
 
   const openConfirmationModal = (card) => {
@@ -64,6 +69,7 @@ function App() {
   };
 
   const handleCardDelete = () => {
+    setIsLoading(true);
     deleteCard({ _id: selectedCard._id })
       .then((data) => {
         setClothingItemsList(
@@ -74,7 +80,8 @@ function App() {
         );
         handleModalClose();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(setIsLoading(false));
   };
 
   useEffect(() => {
@@ -93,6 +100,22 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleModalClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -128,6 +151,7 @@ function App() {
                   clothingItemsList={clothingItemsList}
                   weatherData={weatherData}
                   openCardModal={handleCardClick}
+                  newButtonClick={handleAddClick}
                 />
               }
             />
@@ -138,6 +162,7 @@ function App() {
           isOpen={activeModal === "new-garment"}
           onCloseModal={handleModalClose}
           onAddItem={handleAddItemSubmit}
+          isLoading={isLoading}
         />
         <ItemModal
           openConfirmationModal={openConfirmationModal}
@@ -152,6 +177,7 @@ function App() {
           onAddButtonClick={handleAddClick}
         />
         <DeleteItemCardModal
+          isLoading={isLoading}
           handleCardDelete={handleCardDelete}
           onExitButtonClick={handleModalClose}
           handleCancelDelete={handleCancelDelete}

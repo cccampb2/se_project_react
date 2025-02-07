@@ -5,6 +5,7 @@ function DeleteItemCardModal({
   onExitButtonClick,
   handleCardDelete,
   handleCancelDelete,
+  isLoading,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
@@ -19,7 +20,7 @@ function DeleteItemCardModal({
         </p>
         <p className="modal__statement">This action is irreversible.</p>
         <button onClick={handleCardDelete} className="modal__delete-btn">
-          Yes, delete item
+          {isLoading ? "Deleting..." : "Yes, delete item"}
         </button>
         <button onClick={handleCancelDelete} className="modal__cancel-btn">
           Cancel

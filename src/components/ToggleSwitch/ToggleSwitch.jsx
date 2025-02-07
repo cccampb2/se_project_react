@@ -7,19 +7,17 @@ function ToggleSwitch({ isHidden }) {
     CurrentTemperatureUnitContext
   );
   return (
-    <>
-      <label className={`switch ${isHidden ? "switch_hidden" : ""}`}>
-        <input
-          onChange={handleToggleSwitchChange}
-          className="switch__checkbox"
-          type="checkbox"
-        />
-        <span className="switch__slider">
-          <span className="switch__fahrenheit">F</span>
-          <span className="switch__celsius">C</span>
-        </span>
-      </label>
-    </>
+    <label className={`switch ${isHidden ? "switch_hidden" : ""}`}>
+      <input
+        onChange={handleToggleSwitchChange}
+        className="switch__checkbox"
+        type="checkbox"
+      />
+      <span className="switch__slider">
+        <span className="switch__fahrenheit">F</span>
+        <span className="switch__celsius">C</span>
+      </span>
+    </label>
   );
 }
 

@@ -3,7 +3,7 @@ import "./AddItemModal.css";
 import { useEffect, useState } from "react";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
-function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
+function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
   // declare state for each input field
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
@@ -35,11 +35,11 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem({ name: name, weather: temperatureForClothing, imageUrl: url });
-    onCloseModal();
   };
 
   return (
     <ModalWithForm
+      isLoading={isLoading}
       title={"New Garment"}
       buttonText={"Add garment"}
       isOpen={isOpen}
