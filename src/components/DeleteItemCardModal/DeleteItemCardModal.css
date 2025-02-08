@@ -50,3 +50,9 @@
   top: 20px;
   right: 20px;
 }
+
+@media screen and (max-width: 500px) {
+  .modal:has(> .modal__content_type_delete-item-card) {
+    align-items: center;
+  }
+}
