@@ -51,37 +51,43 @@ function App() {
     setSelectedCard({});
   };
 
-  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+  function handleSubmit(request) {
     setIsLoading(true);
-    addNewItem({ name, imageUrl, weather })
-      .then((item) => {
-        setClothingItemsList([item, ...clothingItemsList]);
-        handleModalClose();
-      })
+    request()
+      .then(handleModalClose)
+
       .catch(console.error)
-      .finally(setIsLoading(false));
+
+      .finally(() => setIsLoading(false));
+  }
+
+  const handleAddItem = (item) => {
+    const makeRequest = () => {
+      return addNewItem(item).then((item) => {
+        setClothingItemsList([item, ...clothingItemsList]);
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
-  const openConfirmationModal = (card) => {
-    setActiveModal("confirmation");
-    setSelectedCard(card);
-    setIsMobileMenuOpened(false);
-  };
-
-  const handleCardDelete = () => {
-    setIsLoading(true);
-    deleteCard({ _id: selectedCard._id })
-      .then((data) => {
+  const handleDeleteCard = () => {
+    const makeRequest = () => {
+      return deleteCard({ _id: selectedCard._id }).then((data) => {
         setClothingItemsList(
           clothingItemsList.filter((card) => {
             return card._id != selectedCard._id;
           }),
           ...clothingItemsList
         );
-        handleModalClose();
-      })
-      .catch(console.error)
-      .finally(setIsLoading(false));
+      });
+    };
+    handleSubmit(makeRequest);
+  };
+
+  const openConfirmationModal = (card) => {
+    setActiveModal("confirmation");
+    setSelectedCard(card);
+    setIsMobileMenuOpened(false);
   };
 
   useEffect(() => {
@@ -100,22 +106,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  useEffect(() => {
-    if (!activeModal) return;
-
-    const handleEscClose = (e) => {
-      if (e.key === "Escape") {
-        handleModalClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [activeModal]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -162,7 +152,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "new-garment"}
           onCloseModal={handleModalClose}
-          onAddItem={handleAddItemSubmit}
+          onAddItem={handleAddItem}
           isLoading={isLoading}
         />
         <ItemModal
@@ -179,7 +169,7 @@ function App() {
         />
         <DeleteItemCardModal
           isLoading={isLoading}
-          handleCardDelete={handleCardDelete}
+          handleCardDelete={handleDeleteCard}
           onExitButtonClick={handleModalClose}
           handleCancelDelete={handleCancelDelete}
           isOpen={activeModal === "confirmation"}

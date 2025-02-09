@@ -8,6 +8,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [temperatureForClothing, setTemperatureForClothing] = useState("");
+  const radioButtons = document.querySelectorAll(".modal__radio-input");
 
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened
@@ -15,6 +16,9 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
     if (isOpen) {
       setName("");
       setUrl("");
+      radioButtons.forEach((btn) => {
+        btn.checked = false;
+      });
     }
   }, [isOpen]);
 
@@ -34,6 +38,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     onAddItem({ name: name, weather: temperatureForClothing, imageUrl: url });
   };
 
@@ -86,7 +91,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
             type="radio"
             id="hot"
             className="modal__radio-input"
-          />{" "}
+          />
           <span className="custom-radio"></span>
           <span>Hot</span>
         </label>
@@ -97,7 +102,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
             type="radio"
             id="warm"
             className="modal__radio-input"
-          />{" "}
+          />
           <span className="custom-radio"></span>
           <span>Warm</span>
         </label>
@@ -108,7 +113,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
             type="radio"
             id="cold"
             className="modal__radio-input"
-          />{" "}
+          />
           <span className="custom-radio"></span>
           <span>Cold</span>
         </label>
