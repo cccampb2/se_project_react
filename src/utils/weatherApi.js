@@ -24,6 +24,7 @@ export const filterWeatherData = (data) => {
 
 const imageToDisplay = (conditionCode, timeOfDay) => {
   let imageName = "";
+  console.log(conditionCode);
 
   if (conditionCode == 800) {
     imageName += "clear";
@@ -31,7 +32,7 @@ const imageToDisplay = (conditionCode, timeOfDay) => {
     imageName += "cloudy";
   } else if (conditionCode >= 500 && conditionCode < 600) {
     imageName += "rain";
-  } else if (conditionCode >= 200 && conditionCode < 300) {
+  } else if (conditionCode >= 200 && conditionCode < 400) {
     imageName += "storm";
   } else if (conditionCode >= 600 && conditionCode < 700) {
     imageName += "snow";
