@@ -9,13 +9,19 @@ function ModalWithForm({
   onExitButtonClick,
   handleSubmit,
   isLoading,
+  onSubmit,
+  isValid,
 }) {
   return (
     <Modal name={"modalWithForm"} isOpen={isOpen} onClose={onExitButtonClick}>
       <h2 className="modal__title">{title}</h2>
-      <form onSubmit={handleSubmit} className="modal__form">
+      <form
+        noValidate
+        onSubmit={onSubmit(handleSubmit)}
+        className="modal__form"
+      >
         {children}
-        <button type="submit" className="modal__submit-btn">
+        <button type="submit" disabled={!isValid} className="modal__submit-btn">
           {isLoading ? "Adding..." : buttonText}
         </button>
       </form>

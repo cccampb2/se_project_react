@@ -1,3 +1,6 @@
+.modal__content_type_modalWithForm {
+}
+
 .modal__title {
   margin: 0;
   margin-bottom: 24px;
@@ -108,6 +111,23 @@
 
 .modal__submit-btn:disabled {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal__error {
+  position: absolute;
+  font-size: 14px;
+  top: -48px;
+  left: 16px;
+  background-color: #fff;
+  width: calc(100% - 42px);
+  height: calc(fit-content + 10px);
+  color: rgba(255, 77, 0, 1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal__error_hidden {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 500px) {

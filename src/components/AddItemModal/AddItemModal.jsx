@@ -1,63 +1,60 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "./AddItemModal.css";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
-  // declare state for each input field
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [temperatureForClothing, setTemperatureForClothing] = useState("");
-  const radioButtons = document.querySelectorAll(".modal__radio-input");
+  const form = useForm({ mode: "onTouched" });
+  const { resetField, register, control, handleSubmit, formState } = form;
+  const { errors, isValid } = formState;
 
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened
   useEffect(() => {
     if (isOpen) {
-      setName("");
-      setUrl("");
-      radioButtons.forEach((btn) => {
-        btn.checked = false;
-      });
+      resetField("name");
+      resetField("url");
+      resetField("weather-type");
     }
   }, [isOpen]);
 
-  // create onChange handlers corresponding to each state variable
-
-  const handleNameOnChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleUrlOnChange = (e) => {
-    setUrl(e.target.value);
-  };
-
-  const handleRadioButtonOnChange = (e) => {
-    setTemperatureForClothing(e.target.id);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    onAddItem({ name: name, weather: temperatureForClothing, imageUrl: url });
+  const handleFormSubmit = (data, e) => {
+    onAddItem({
+      name: data.name,
+      weather: data["weather-type"],
+      imageUrl: data.url,
+    });
   };
 
   return (
     <ModalWithForm
+      isValid={isValid}
       isLoading={isLoading}
       title={"New Garment"}
       buttonText={"Add garment"}
       isOpen={isOpen}
       onExitButtonClick={onCloseModal}
-      handleSubmit={handleSubmit}
+      handleSubmit={handleFormSubmit}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="name" className="modal__label">
         <div>
-          Name <span id="name-error"></span>
+          Name
+          <span className="modal__error">{errors.name?.message}</span>
         </div>
         <input
-          value={name}
-          onChange={handleNameOnChange}
+          {...register("name", {
+            pattern: {
+              value: /^[A-Za-z\s]{3,}$/,
+              message:
+                "Name must be 3+ characters (No special symbols/numbers)",
+            },
+            required: {
+              value: true,
+              message: "Name is required",
+            },
+          })}
           className="modal__input"
           type="text"
           id="name"
@@ -66,12 +63,22 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         <div>
-          Image <span id="image-error"></span>
+          Image <span className="modal__error">{errors.url?.message}</span>
         </div>
 
         <input
-          value={url}
-          onChange={handleUrlOnChange}
+          {...register("url", {
+            required: {
+              value: true,
+              message: "Url is required",
+            },
+            pattern: {
+              value:
+                /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(\/[\w-]*)*\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?(#.*)?$/i,
+
+              message: "Invalid url format",
+            },
+          })}
           className="modal__input"
           type="url"
           id="imageUrl"
@@ -81,12 +88,16 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
       <fieldset className="modal__radio-btns">
         <div>
           <legend className="modal__legend">Select the weather type:</legend>
-          <span id="radio-error"></span>
         </div>
 
         <label htmlFor="hot" className="modal__label modal__label_type_radio">
           <input
-            onChange={handleRadioButtonOnChange}
+            {...register("weather-type", {
+              required: {
+                value: true,
+              },
+            })}
+            value="hot"
             name="weather-type"
             type="radio"
             id="hot"
@@ -97,7 +108,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
         </label>
         <label htmlFor="warm" className="modal__label modal__label_type_radio">
           <input
-            onChange={handleRadioButtonOnChange}
+            {...register("weather-type", {
+              required: {
+                value: true,
+                message: "Weather is required",
+              },
+            })}
+            value="warm"
             name="weather-type"
             type="radio"
             id="warm"
@@ -108,7 +125,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
         </label>
         <label htmlFor="cold" className="modal__label modal__label_type_radio">
           <input
-            onChange={handleRadioButtonOnChange}
+            {...register("weather-type", {
+              required: {
+                value: true,
+                message: "Weather is required",
+              },
+            })}
+            value="cold"
             name="weather-type"
             type="radio"
             id="cold"

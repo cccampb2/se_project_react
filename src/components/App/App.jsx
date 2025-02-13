@@ -64,7 +64,7 @@ function App() {
   const handleAddItem = (item) => {
     const makeRequest = () => {
       return addNewItem(item).then((item) => {
-        setClothingItemsList([item, ...clothingItemsList]);
+        setClothingItemsList([...clothingItemsList, item]);
       });
     };
     handleSubmit(makeRequest);
