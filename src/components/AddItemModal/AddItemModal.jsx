@@ -41,7 +41,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
       <label htmlFor="name" className="modal__label">
         <div>
           Name
-          <span className="modal__error">{errors.name?.message}</span>
+          <span className="modal__error"> {errors.name?.message}</span>
         </div>
         <input
           {...register("name", {
