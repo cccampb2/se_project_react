@@ -16,6 +16,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx";
 import { getItems, addNewItem, deleteCard } from "../../utils/api.js";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,7 +24,7 @@ function App() {
     temp: { F: "999", C: "999" },
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("log-in");
   const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -66,6 +67,13 @@ function App() {
       return addNewItem(item).then((item) => {
         setClothingItemsList([...clothingItemsList, item]);
       });
+    };
+    handleSubmit(makeRequest);
+  };
+
+  const handleLogIn = (data) => {
+    const makeRequest = () => {
+      return;
     };
     handleSubmit(makeRequest);
   };
@@ -149,6 +157,12 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        <RegisterModal
+          isOpen={activeModal === "log-in"}
+          onCloseModal={handleModalClose}
+          onLogin={handleLogIn}
+          isLoading={isLoading}
+        />
         <AddItemModal
           isOpen={activeModal === "new-garment"}
           onCloseModal={handleModalClose}

@@ -19,8 +19,8 @@
   background-color: #ffffff;
   position: relative;
   border-radius: 20px;
-  width: 496px;
-  height: 436px;
+  min-width: 496px;
+  min-height: 436px;
   border: solid rgba(0, 0, 0, 0.3) 1px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;

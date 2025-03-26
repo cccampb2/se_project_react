@@ -24,7 +24,6 @@ export const filterWeatherData = (data) => {
 
 const imageToDisplay = (conditionCode, timeOfDay) => {
   let imageName = "";
-  console.log(conditionCode);
 
   if (conditionCode == 800) {
     imageName += "clear";

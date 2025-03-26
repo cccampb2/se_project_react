@@ -1,6 +1,6 @@
 .modal__content_type_delete-item-card {
-  width: 670px;
-  height: 280px;
+  min-width: 670px;
+  min-height: 280px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;

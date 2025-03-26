@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ name, onClose, children, isOpen }) => {
+export const Modal = ({ name, onClose, children, isOpen, ...props }) => {
   // here is `useEffect` for the `Escape` listener
   useEffect(() => {
     // we should define the handler inside `useEffect`, so that it wouldn’t lose the reference to be able to remove it
@@ -29,7 +29,11 @@ export const Modal = ({ name, onClose, children, isOpen }) => {
       onClick={handleOverlay}
     >
       {/* the container for the contents */}
-      <div className={`modal__content modal__content_type_${name}`}>
+      <div
+        className={`modal__content modal__content_type_${name} ${
+          props.type === "signUp" ? "modal_type_signUp" : ""
+        } `}
+      >
         {children}
         <button
           className={`modal__close-btn modal__close-btn_type_${name}`}

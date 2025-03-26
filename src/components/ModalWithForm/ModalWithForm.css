@@ -126,8 +126,30 @@
   text-align: center;
 }
 
+.modal__btns {
+  display: flex;
+  gap: 12px;
+}
+
 .modal__error_hidden {
   visibility: hidden;
+}
+
+.modal__sign-up-btn {
+  min-width: 73px;
+  min-height: 20px;
+  border: none;
+  color: rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0;
+}
+
+.modal__sign-up-btn:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
