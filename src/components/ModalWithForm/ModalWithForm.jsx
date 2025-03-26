@@ -11,9 +11,16 @@ function ModalWithForm({
   isLoading,
   onSubmit,
   isValid,
+  type,
+  ...props
 }) {
   return (
-    <Modal name={"modalWithForm"} isOpen={isOpen} onClose={onExitButtonClick}>
+    <Modal
+      name={"modalWithForm"}
+      type={type}
+      isOpen={isOpen}
+      onClose={onExitButtonClick}
+    >
       <h2 className="modal__title">{title}</h2>
       <form
         noValidate
@@ -21,9 +28,20 @@ function ModalWithForm({
         className="modal__form"
       >
         {children}
-        <button type="submit" disabled={!isValid} className="modal__submit-btn">
-          {isLoading ? "Adding..." : buttonText}
-        </button>
+        <div className="modal__btns">
+          <button
+            type="submit"
+            disabled={!isValid}
+            className="modal__submit-btn"
+          >
+            {isLoading ? "Adding..." : buttonText}
+          </button>
+          {props.signUp && (
+            <button type="button" className="modal__sign-up-btn">
+              or Sign Up
+            </button>
+          )}
+        </div>
       </form>
     </Modal>
   );

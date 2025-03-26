@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 // onAddItem refers to handleAddItemSubmit, which is declared in App.js
 function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
   const form = useForm({ mode: "onTouched" });
-  const { resetField, register, control, handleSubmit, formState } = form;
+  const { resetField, register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
 
   // use a useEffect hook to reset the input field state to empty strings when
