@@ -16,7 +16,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx";
 import { getItems, addNewItem, deleteCard } from "../../utils/api.js";
-import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -157,7 +157,7 @@ function App() {
           </Routes>
           <Footer />
         </div>
-        <RegisterModal
+        <LoginModal
           isOpen={activeModal === "log-in"}
           onCloseModal={handleModalClose}
           onLogin={handleLogIn}
