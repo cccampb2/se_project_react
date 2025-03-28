@@ -18,6 +18,7 @@ import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx"
 import { getItems, addNewItem, deleteCard } from "../../utils/api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,12 +26,13 @@ function App() {
     temp: { F: "999", C: "999" },
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("sign-up");
+  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItemsList, setClothingItemsList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -163,12 +165,14 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItemsList={clothingItemsList}
-                  weatherData={weatherData}
-                  openCardModal={handleCardClick}
-                  newButtonClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItemsList={clothingItemsList}
+                    weatherData={weatherData}
+                    openCardModal={handleCardClick}
+                    newButtonClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
