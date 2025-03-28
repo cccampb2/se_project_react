@@ -17,6 +17,7 @@ import ItemModal from "../ItemModal/ItemModal.jsx";
 import DeleteItemCardModal from "../DeleteItemCardModal/DeleteItemCardModal.jsx";
 import { getItems, addNewItem, deleteCard } from "../../utils/api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -24,7 +25,7 @@ function App() {
     temp: { F: "999", C: "999" },
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("sign-up");
   const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -52,6 +53,15 @@ function App() {
     setSelectedCard({});
   };
 
+  const toggleLoginSwitch = () => {
+    setActiveModal("log-in");
+    setIsMobileMenuOpened(false);
+  };
+
+  const toggleSignUpSwitch = () => {
+    setActiveModal("sign-up");
+    setIsMobileMenuOpened(false);
+  };
   function handleSubmit(request) {
     setIsLoading(true);
     request()
@@ -72,6 +82,13 @@ function App() {
   };
 
   const handleLogIn = (data) => {
+    const makeRequest = () => {
+      return;
+    };
+    handleSubmit(makeRequest);
+  };
+
+  const handleRegister = (data) => {
     const makeRequest = () => {
       return;
     };
@@ -158,9 +175,18 @@ function App() {
           <Footer />
         </div>
         <LoginModal
+          toggleSignUpSwitch={toggleSignUpSwitch}
           isOpen={activeModal === "log-in"}
           onCloseModal={handleModalClose}
           onLogin={handleLogIn}
+          isLoading={isLoading}
+        />
+
+        <RegisterModal
+          toggleLoginSwitch={toggleLoginSwitch}
+          isOpen={activeModal === "sign-up"}
+          onCloseModal={handleModalClose}
+          onLogin={handleRegister}
           isLoading={isLoading}
         />
         <AddItemModal

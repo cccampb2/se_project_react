@@ -12,6 +12,8 @@ function ModalWithForm({
   onSubmit,
   isValid,
   type,
+  toggleLoginSwitch,
+  toggleSignUpSwitch,
   ...props
 }) {
   return (
@@ -36,9 +38,23 @@ function ModalWithForm({
           >
             {isLoading ? "Adding..." : buttonText}
           </button>
-          {props.signUp && (
-            <button type="button" className="modal__sign-up-btn">
+          {props.login && (
+            <button
+              onClick={toggleSignUpSwitch}
+              type="button"
+              className="modal__sign-up-btn"
+            >
               or Sign Up
+            </button>
+          )}
+
+          {props.signUp && (
+            <button
+              onClick={toggleLoginSwitch}
+              type="button"
+              className="modal__log-in-btn"
+            >
+              or Log In
             </button>
           )}
         </div>

@@ -1,9 +1,15 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
-import "./RegisterModal.css";
+import "./LoginModal.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-function RegisterModal({ isOpen, onLogin, onCloseModal, isLoading }) {
+function LoginModal({
+  isOpen,
+  onLogin,
+  onCloseModal,
+  isLoading,
+  toggleSignUpSwitch,
+}) {
   const form = useForm({ mode: "onTouched" });
   const { resetField, register, handleSubmit, formState } = form;
   const { errors, isValid } = formState;
@@ -28,16 +34,17 @@ function RegisterModal({ isOpen, onLogin, onCloseModal, isLoading }) {
       onExitButtonClick={onCloseModal}
       handleSubmit={handleFormSubmit}
       onSubmit={handleSubmit}
-      signUp={true}
-      type="signUp"
+      login={true}
+      type="login"
+      toggleSignUpSwitch={toggleSignUpSwitch}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="email-login" className="modal__label">
         <div>
           Email
           <span className="modal__error">{errors.email?.message}</span>
         </div>
         <input
-          {...register("email", {
+          {...register("email-login", {
             required: {
               value: true,
               message: "Email is required",
@@ -49,18 +56,18 @@ function RegisterModal({ isOpen, onLogin, onCloseModal, isLoading }) {
           })}
           className="modal__input"
           type="email"
-          id="email"
+          id="email-login"
           placeholder="Email"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="password-login" className="modal__label">
         <div>
           Password
           <span className="modal__error">{errors.password?.message}</span>
         </div>
 
         <input
-          {...register("password", {
+          {...register("password-login", {
             required: {
               value: true,
               message: "Password is required",
@@ -68,7 +75,7 @@ function RegisterModal({ isOpen, onLogin, onCloseModal, isLoading }) {
           })}
           className="modal__input"
           type="password"
-          id="password"
+          id="password-login"
           placeholder="Password"
         />
       </label>
@@ -76,4 +83,4 @@ function RegisterModal({ isOpen, onLogin, onCloseModal, isLoading }) {
   );
 }
 
-export default RegisterModal;
+export default LoginModal;
