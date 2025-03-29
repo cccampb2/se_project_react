@@ -36,7 +36,7 @@ function ModalWithForm({
             disabled={!isValid}
             className="modal__submit-btn"
           >
-            {isLoading ? "Adding..." : buttonText}
+            {isLoading ? "Saving..." : buttonText}
           </button>
           {props.login && (
             <button

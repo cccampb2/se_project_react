@@ -6,6 +6,7 @@
   height: fit-content;
   text-wrap: nowrap;
   align-items: center;
+  position: relative;
 }
 
 .side-bar__avatar {
@@ -48,17 +49,27 @@
 }
 
 .side-bar__logout-edit-data {
-  visibility: hidden;
   position: absolute;
+  left: 0;
+  bottom: calc(-100% - 24px);
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 24.8px;
   color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 
 .side-bar__edit-profile {
   margin: 0;
+}
+
+.side-bar__edit-profile:hover,
+.side-bar__logout:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 1);
 }
 
 .side-bar__logout {

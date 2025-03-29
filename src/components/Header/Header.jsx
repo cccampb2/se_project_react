@@ -53,7 +53,9 @@ function Header({
         {isLoggedIn && (
           <NavLink to="/profile" className="header__link">
             <div className="header__user-container">
-              <div className="header__username">{currentUser.name}</div>
+              <div className="header__username">
+                {currentUser ? currentUser.name : "User name"}
+              </div>
               {currentUser.avatar && (
                 <img
                   src={currentUser.avatar}

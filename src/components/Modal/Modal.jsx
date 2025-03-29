@@ -32,7 +32,9 @@ export const Modal = ({ name, onClose, children, isOpen, ...props }) => {
       <div
         className={`modal__content modal__content_type_${name} ${
           props.type === "login" ? "modal_type_login" : ""
-        } ${props.type === "signUp" ? "modal_type_signUp" : ""} `}
+        } ${props.type === "signUp" ? "modal_type_signUp" : ""} ${
+          props.type === "edit" ? "modal_type_edit" : ""
+        } `}
       >
         {children}
         <button

@@ -4,7 +4,13 @@ import "./Main.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { Outlet } from "react-router-dom";
-function Main({ weatherData, openCardModal, clothingItemsList }) {
+function Main({
+  weatherData,
+  openCardModal,
+  clothingItemsList,
+  onCardLike,
+  isLoggedIn,
+}) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <main>
@@ -22,6 +28,8 @@ function Main({ weatherData, openCardModal, clothingItemsList }) {
             .map((item) => {
               return (
                 <ItemCard
+                  isLoggedIn={isLoggedIn}
+                  onCardLike={onCardLike}
                   key={item._id}
                   item={item}
                   openCardModal={openCardModal}
