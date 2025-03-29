@@ -22,7 +22,9 @@
   line-height: 24px;
 }
 
-.header__add-clothes-btn {
+.header__add-clothes-btn,
+.header__sign-up-btn,
+.header__log-in-btn {
   margin: 0;
   border: none;
   background-color: transparent;
@@ -33,7 +35,9 @@
   line-height: 24px;
 }
 
-.header__add-clothes-btn:hover {
+.header__add-clothes-btn:hover,
+.header__sign-up-btn:hover,
+.header__log-in-btn:hover {
   cursor: pointer;
 }
 
@@ -83,6 +87,28 @@
   right: 16px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.header__placeholder-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 500px) {

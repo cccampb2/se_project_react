@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 function RegisterModal({
   isOpen,
-  onLogin,
+  onRegister,
   onCloseModal,
   isLoading,
   toggleLoginSwitch,
@@ -18,11 +18,16 @@ function RegisterModal({
   // the modal is opened
   useEffect(() => {
     if (isOpen) {
-      resetField();
+      resetField("email_signUp");
+      resetField("password_signUp");
+      resetField("avatar_signUp");
+      resetField("name_signUp");
     }
   }, [isOpen]);
 
-  const handleFormSubmit = (data, e) => {};
+  const handleFormSubmit = (data, e) => {
+    onRegister(data);
+  };
 
   return (
     <ModalWithForm
@@ -38,35 +43,39 @@ function RegisterModal({
       type="signUp"
       toggleLoginSwitch={toggleLoginSwitch}
     >
-      <label htmlFor="email-signUp" className="modal__label">
+      <label htmlFor="email_signUp" className="modal__label">
         <div>
-          Email *<span className="modal__error">{errors.email?.message}</span>
+          Email *
+          <span className="modal__error">{errors.email_signUp?.message}</span>
         </div>
         <input
-          {...register("email-signUp", {
+          {...register("email_signUp", {
             required: {
               value: true,
               message: "Email is required",
             },
             pattern: {
-              value: /^\S+@\S+\.\S+$/,
+              value:
+                /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_'+\-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/i,
               message: "Invalid email format!",
             },
           })}
           className="modal__input"
           type="email"
-          id="email-signUp"
+          id="email_signUp"
           placeholder="Email"
         />
       </label>
-      <label htmlFor="password-signUp" className="modal__label">
+      <label htmlFor="password_signUp" className="modal__label">
         <div>
           Password *
-          <span className="modal__error">{errors.password?.message}</span>
+          <span className="modal__error">
+            {errors.password_signUp?.message}
+          </span>
         </div>
 
         <input
-          {...register("password-signUp", {
+          {...register("password_signUp", {
             required: {
               value: true,
               message: "Password is required",
@@ -74,17 +83,18 @@ function RegisterModal({
           })}
           className="modal__input"
           type="password"
-          id="password-signUp"
+          id="password_signUp"
           placeholder="Password"
         />
       </label>
-      <label htmlFor="name-signUp" className="modal__label">
+      <label htmlFor="name_signUp" className="modal__label">
         <div>
-          Name *<span className="modal__error">{errors.name?.message}</span>
+          Name *
+          <span className="modal__error">{errors.name_signUp?.message}</span>
         </div>
 
         <input
-          {...register("name-signUp", {
+          {...register("name_signUp", {
             required: {
               value: true,
               message: "Name is required",
@@ -97,18 +107,18 @@ function RegisterModal({
           })}
           className="modal__input"
           type="text"
-          id="name-signUp"
+          id="name_signUp"
           placeholder="Name"
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="avatar_signUp" className="modal__label">
         <div>
           Avatar URL *
-          <span className="modal__error">{errors.avatar?.message}</span>
+          <span className="modal__error">{errors.avatar_signUp?.message}</span>
         </div>
 
         <input
-          {...register("avatar", {
+          {...register("avatar_signUp", {
             required: {
               value: true,
               message: "Avatar URL is required",
@@ -122,7 +132,7 @@ function RegisterModal({
           })}
           className="modal__input"
           type="text"
-          id="avatar"
+          id="avatar_signUp"
           placeholder="Avatar URL"
         />
       </label>

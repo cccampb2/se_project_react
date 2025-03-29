@@ -18,11 +18,14 @@ function LoginModal({
   // the modal is opened
   useEffect(() => {
     if (isOpen) {
-      resetField();
+      resetField("email_login");
+      resetField("password_login");
     }
   }, [isOpen]);
 
-  const handleFormSubmit = (data, e) => {};
+  const handleFormSubmit = (data, e) => {
+    onLogin(data);
+  };
 
   return (
     <ModalWithForm
@@ -38,13 +41,13 @@ function LoginModal({
       type="login"
       toggleSignUpSwitch={toggleSignUpSwitch}
     >
-      <label htmlFor="email-login" className="modal__label">
+      <label htmlFor="email_login" className="modal__label">
         <div>
           Email
-          <span className="modal__error">{errors.email?.message}</span>
+          <span className="modal__error">{errors.email_login?.message}</span>
         </div>
         <input
-          {...register("email-login", {
+          {...register("email_login", {
             required: {
               value: true,
               message: "Email is required",
@@ -56,18 +59,18 @@ function LoginModal({
           })}
           className="modal__input"
           type="email"
-          id="email-login"
+          id="email_login"
           placeholder="Email"
         />
       </label>
-      <label htmlFor="password-login" className="modal__label">
+      <label htmlFor="password_login" className="modal__label">
         <div>
           Password
-          <span className="modal__error">{errors.password?.message}</span>
+          <span className="modal__error">{errors.password_login?.message}</span>
         </div>
 
         <input
-          {...register("password-login", {
+          {...register("password_login", {
             required: {
               value: true,
               message: "Password is required",
@@ -75,7 +78,7 @@ function LoginModal({
           })}
           className="modal__input"
           type="password"
-          id="password-login"
+          id="password_login"
           placeholder="Password"
         />
       </label>

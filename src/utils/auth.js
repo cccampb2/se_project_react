@@ -1,3 +1,5 @@
+const baseUrl = "http://localhost:3001";
+
 function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
@@ -18,8 +20,18 @@ function login({ email, password }) {
   }).then(checkResponse);
 }
 
+function getMe(jwt) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
+  }).then(checkResponse);
+}
+
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
-export { signUp, login };
+export { signUp, login, getMe };
