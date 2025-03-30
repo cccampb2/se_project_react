@@ -122,7 +122,7 @@ function App() {
   const handleAddItem = (item) => {
     const makeRequest = () => {
       return addNewItem(item, localStorage.getItem("jwt")).then((item) => {
-        setClothingItemsList([...clothingItemsList, item]);
+        setClothingItemsList([item, ...clothingItemsList]);
       });
     };
     handleSubmit(makeRequest);
@@ -255,7 +255,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => console.log(err));
+          .catch(console.error);
   };
 
   const handleLogOut = () => {

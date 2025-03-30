@@ -12,7 +12,8 @@ function EditProfileModal({ isOpen, onEdit, onCloseModal, isLoading }) {
   // the modal is opened
   useEffect(() => {
     if (isOpen) {
-      resetField("");
+      resetField("name_edit");
+      resetField("avatar_edit");
     }
   }, [isOpen]);
 

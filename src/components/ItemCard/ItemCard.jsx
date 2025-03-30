@@ -11,9 +11,6 @@ function ItemCard({ item, openCardModal, onCardLike, isLoggedIn }) {
   const handleCardClick = () => {
     openCardModal(item);
   };
-
-  useEffect(() => {}, [isLiked]);
-
   const handleLike = (event) => {
     event.stopPropagation();
     onCardLike({ id: item["_id"], isLiked });

@@ -1,4 +1,5 @@
 const baseUrl = "http://localhost:3001";
+import checkResponse from "./api.js";
 
 function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {
@@ -59,10 +60,6 @@ function updateProfile({ name, avatar }, jwt) {
     },
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
-}
-
-function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
 export { signUp, login, getMe, updateProfile, addCardlike, removeCardlike };
