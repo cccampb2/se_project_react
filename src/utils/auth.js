@@ -1,5 +1,5 @@
 const baseUrl = "http://localhost:3001";
-import checkResponse from "./api.js";
+import { checkResponse } from "./api.js";
 
 function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {

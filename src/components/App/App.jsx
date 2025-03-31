@@ -46,10 +46,13 @@ function App() {
       return;
     }
 
-    auth.getMe(jwt).then((res) => {
-      setIsLoggedIn(true);
-      setCurrentUser(res);
-    });
+    auth
+      .getMe(jwt)
+      .then((res) => {
+        setIsLoggedIn(true);
+        setCurrentUser(res);
+      })
+      .catch(console.error);
   }, []);
 
   const handleCardClick = (card) => {

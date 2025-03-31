@@ -2,18 +2,21 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "./EditProfileModal.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function EditProfileModal({ isOpen, onEdit, onCloseModal, isLoading }) {
   const form = useForm({ mode: "onTouched" });
-  const { resetField, register, handleSubmit, formState } = form;
+  const { resetField, register, handleSubmit, formState, setValue } = form;
   const { errors, isValid } = formState;
+  const { currentUser } = useContext(CurrentUserContext);
 
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened
   useEffect(() => {
     if (isOpen) {
-      resetField("name_edit");
-      resetField("avatar_edit");
+      setValue("name_edit", currentUser.name);
+      setValue("avatar_edit", currentUser.avatar);
     }
   }, [isOpen]);
 
