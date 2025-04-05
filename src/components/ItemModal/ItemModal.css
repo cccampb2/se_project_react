@@ -71,7 +71,8 @@
   }
 
   .modal__image {
-    width: 343px;
+    width: -webkit-fill-available;
+
     height: 343px;
     margin: 0 0 20px;
   }
