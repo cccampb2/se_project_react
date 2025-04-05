@@ -155,6 +155,11 @@ function App() {
             email: data.email_signUp,
             password: data.password_signUp,
           });
+        })
+        .then((res) => {
+          return auth.getMe(res.token).then((userData) => {
+            return { token: res.token, user: userData };
+          });
         });
     };
     handleSignUpRequest(makeRequest);

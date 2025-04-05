@@ -50,7 +50,7 @@ function Header({
             + Add Clothes
           </button>
         )}
-        {isLoggedIn && (
+        {isLoggedIn && currentUser && (
           <NavLink to="/profile" className="header__link">
             <div className="header__user-container">
               <div className="header__username">

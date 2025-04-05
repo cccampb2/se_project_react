@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 function ItemModal({ isOpen, card, onExitButtonClick, openConfirmationModal }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const isOwn = card.owner === currentUser._id;
+  const isOwn = card.owner === currentUser?._id;
 
   return (
     <Modal isOpen={isOpen} onClose={onExitButtonClick} name={"card"}>

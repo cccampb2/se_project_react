@@ -100,9 +100,9 @@ function RegisterModal({
               message: "Name is required",
             },
             pattern: {
-              value: /^[A-Za-z\s]{3,}$/,
+              value: /^[A-Za-z\s]{2,30}$/,
               message:
-                "Name must be 3+ characters (No special symbols/numbers)",
+                "Name must be 2-30 characters (No special symbols/numbers)",
             },
           })}
           className="modal__input"

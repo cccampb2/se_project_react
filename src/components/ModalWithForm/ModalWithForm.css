@@ -160,6 +160,7 @@
   .modal__content {
     border-radius: 12px 12px 0 0;
     padding: 32px 16px;
+    min-width: 100%;
   }
 
   .modal__close-btn {

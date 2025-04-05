@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react";
 
 function ItemCard({ item, openCardModal, onCardLike, isLoggedIn }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const isLiked = item.likes.includes(currentUser._id);
+  const isLiked = item.likes.includes(currentUser?._id);
 
   const handleCardClick = () => {
     openCardModal(item);

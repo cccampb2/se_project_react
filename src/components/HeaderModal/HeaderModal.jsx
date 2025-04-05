@@ -3,7 +3,7 @@ import "./HeaderModal.css";
 import { NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 function HeaderModal({
   onAddButtonClick,
@@ -21,7 +21,7 @@ function HeaderModal({
         isMobileMenuOpened ? "modal__content_type_header-is-opened" : ""
       }`}
     >
-      {isLoggedIn && (
+      {isLoggedIn && currentUser && (
         <NavLink to="/profile" className="header__link">
           <div className="header__user-container">
             <p className="header__username">

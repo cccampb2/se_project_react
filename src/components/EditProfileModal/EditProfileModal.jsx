@@ -49,9 +49,9 @@ function EditProfileModal({ isOpen, onEdit, onCloseModal, isLoading }) {
               message: "Name is required",
             },
             pattern: {
-              value: /^[A-Za-z\s]{3,}$/,
+              value: /^[A-Za-z\s]{2,30}$/,
               message:
-                "Name must be 3+ characters (No special symbols/numbers)",
+                "Name must be 2-30 characters (No special symbols/numbers)",
             },
           })}
           className="modal__input"
@@ -74,7 +74,7 @@ function EditProfileModal({ isOpen, onEdit, onCloseModal, isLoading }) {
             },
             pattern: {
               value:
-                /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(\/[\w-]*)*\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?(#.*)?$/i,
+                /^(https?:\/\/)?([\w.-]+)(\/[\w./-]*)*\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?(#.*)?$/i,
 
               message: "Invalid url format",
             },

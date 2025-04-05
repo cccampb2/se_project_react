@@ -1,5 +1,9 @@
-const baseUrl = "http://localhost:3001";
 import { checkResponse } from "./api.js";
+
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.whattowear.ftp.sh"
+    : "http://localhost:3001";
 
 function signUp({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {
