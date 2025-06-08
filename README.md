@@ -19,6 +19,7 @@
 ### Clothing Card Modal
 ![Clothing Card Modal](./src/assets/CardView.png)
 
+
 ## Technologies Used
 > React (Frontend)    
 > Node.js  
