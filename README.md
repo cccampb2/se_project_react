@@ -20,17 +20,17 @@
 ![Saved News Page](./src/assets/)
 
 ## Technologies Used
-> React (Frontend)  
-> Node.js
-> Express.js
-> MongoDB
-> JWT Authentication & Authorization
+> React (Frontend)    
+> Node.js  
+> Express.js  
+> MongoDB  
+> JWT Authentication & Authorization  
 > CSS BEM Methodology  
 
 
 ## Check it out here:  
-> [https://whattowear.ftp.sh/]  
-> What to wear (WTWR) [backend](https://github.com/cccampb2/se_project_express)
+> ### Deployed: [https://whattowear.ftp.sh/]  
+> ### What to wear (WTWR) [backend](https://github.com/cccampb2/se_project_express)
 
 
 ## Live Demo
