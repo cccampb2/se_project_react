@@ -8,16 +8,16 @@
 
 ## Overview
 
-### Home Page
-![Home Page](./src/assets/)
+### Main Page
+![Main Page](./src/assets/MainPage.png)
 
 
-### Author Section
-![Author Section](./src/assets/)
+### Profile Page
+![Profile Page](./src/assets/ProfileView.png)
 
 
-### Saved News Page
-![Saved News Page](./src/assets/)
+### Clothing Card Modal
+![Clothing Card Modal](./src/assets/CardView.png)
 
 ## Technologies Used
 > React (Frontend)    
